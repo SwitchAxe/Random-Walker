@@ -11,22 +11,11 @@ enum Directions {
     Down,
     None,
 }
-// #[derive(Clone)]
-// #[derive(Copy)]
-// struct Cell {
-//     //1 for the head, 2 for the trail, 0 for a dead cell
-//     old_state: usize,
-//     new_state: usize,
-// }
 
 fn main() {
-    //let mut grid = [[Cell {old_state: 0, new_state: 0}; ROWS]; COLS];
     let mut trail: Vec<(usize, usize)> = Vec::new();
-    //first head of the automaton
     let head = (ROWS/2, COLS/2);
     trail.push(head);
-    //setting the corrisponding grid entry to true:
-    //grid[head.0][head.1].old_state = 1;
     let interval = time::Duration::from_millis(100);
     let mut generations: usize = 1;
     print!("\x1b[2J");
@@ -59,18 +48,6 @@ fn get_next_head(head: &(usize, usize),
         _ => (head.0, head.1),
     };
 }
-
-// fn print_grid(grid: &[[Cell; ROWS]; COLS]) {
-//     for x in 1..ROWS {
-//         for y in 1..COLS {
-//             println!("{}", if grid[x][y].old_state == 0 {
-//                 " "
-//             } else {
-//                 "o"
-//             });
-//         }
-//     }
-// }
 
 fn print_grid(trail: &Vec<(usize, usize)>)
 {
